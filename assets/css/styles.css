@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #ccc;
+}
+
+.parent {
+    margin: 20px;
+    padding: 20px;
+}
+
+.file-btn-row {
+    background: linear-gradient(to right, rgba(84, 7, 146, 0.829), rgba(0, 60, 255, 0.4));
+}
+
+.spaced-row {
+    background: linear-gradient(to right, rgba(21, 7, 146, 0.829), rgba(6, 30, 109, 0.767));
+    padding: 10px;
+}
+
+.file-manager-row {
+    background: linear-gradient(to right, rgba(255, 251, 8, 0.212), rgba(4, 24, 90, 0.301));
+}
+
+.set-margin-10 {
+    margin: 10px;
+}
+
+.set-border-radius {
+    border-radius: 6px;
+}
+
+.btn-create-folder, .btn-create-folder:hover {
+    background-color: rgb(8, 153, 134);
+    color: #FFFFFF !important;
+}
+
+.btn-remove, .btn-remove:hover {
+    background-color: rgb(218, 111, 108);
+    color: #FFFFFF !important;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+.cus-color1 {
+    background-color: #ccc;
+}
+
+.cus-color2 {
+    background-color: #000;
+    color: #FFF;
+}
+
+.cus-color3 {
+    background-color: blue;
+    color: #FFF;
+}
+
+.mg-10 {
+    margin: 10px;
+}
+
+.color-white {
+    color: #FFFFFF;
+}
+
+.custom-file-manage {
+    color: rgba(195, 35, 29, 1);
+    margin-top: 20px;
+    /* margin: 5px; */
+}
+
+.custom-input {
+    margin-top: 7px !important;
+    width: 50% !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* @media (max-width:400px){
+    .file-buttons{
+        display: none;
+    }
+} */
+
+
+.modal-container {
+    margin: 20px;
+}
+
+.custom-styled-paragraph {
+    margin: 20px;
+    padding: 20px;
+    background-color: #000000;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    display: none;
+}

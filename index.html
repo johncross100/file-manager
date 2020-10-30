@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2> FILE MANAGER SYSTEM </h2>
+
+        <div class="file-manager container set-border-radius">
+
+            <div class="row file-btn-row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 padding-10">
+                    <button class="btn btn-create-folder set-border-radius clickFolderNew"> Create Folder </button>
+                    &nbsp;
+                    <button class="btn set-border-radius" data-toggle="modal" data-target="#myModal" onclick="updateSelect()"> Create File </button>
+                    &nbsp;
+                    <button class="btn btn-remove set-border-radius clickRemoveSingle">Remove Single</button>
+                    &nbsp;
+                    <button class="btn btn-danger set-border-radius clickClearAll">Clear All</button>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row spaced-row"></div>
+            <div class="row file-manager-row">
+                
+                <p id="showSelectedIndex" class="custom-styled-paragraph"></p>
+
+                <div class="folders padding-20">
+                    <h2 class="mg-10">FOLDERS</h2>
+                    <div class="row folder-list"></div>
+                </div>
+                <hr>
+                <div class="files">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="mg-10">FILES</h2>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="currentFileType" class="form-control">
+                                <option value="jpg">JPG</option>
+                                <option value="png">PNG</option>
+                                <option value="svg">SVG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row file-list"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create New File</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-container">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="folderOptions">Select Folder:</label>
+                                <select id="folderOptions" class="form-control">
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="newFileName">Input File Name:</label>
+                                        <input type="text" id="newFileName" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="newFileType">Input File Type:</label>
+                                        <select id="newFileType" class="form-control">
+                                            <option value="png">PNG</option>
+                                            <option value="jpg">JPG</option>
+                                            <option value="svg">SVG</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="createNewFile">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/index.js"></script>
+    <!-- <script src="assets/js/query.js"></script> -->
+
+</body>
+
+</html>
