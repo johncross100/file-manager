@@ -1,10 +1,13 @@
+// LOCAL STORAGE (KEY}
 const arrayKey = "GLOBAL_ARRAY_KEY";
-const SIZE_LIMIT = 6;
+const SIZE_LIMIT = 6; // FOLDER SIZE LIMIT
 
+// ACCEPTED FILE FORMATS
 const FILE_TYPE_ARR = [
     "png", "jpg", "svg"
 ];
 
+// INITIALLY GET THE LOCALLY STORED ARRAY
 const copyArr = getLocallyStored();
 let globalArray = (copyArr == null) ? [] : copyArr;
 
@@ -35,18 +38,22 @@ window.onload = function(e) {
     const clickRemoveSingle = $(".clickRemoveSingle");
 
     let currentIndex = "";
-
+    
+    // GET THE CURRENT FILE TYPE 
     const file = document.querySelector("#currentFileType");
-    listAllFiles(file.value);
-
+    listAllFiles(file.value); // LIST FILES WITHIN THE PARTICULAR FILE TYPE
+    
+    
+    //LISTENER WHENEVER A NEW FILE TYPE IS SELECTED
     file.addEventListener("change", function(e){
         listAllFiles(this.value);
     });
-
+    
+    // CREATE A NEW FOLDER
     clickCreator.addEventListener("click", function(e){
         const newCount = counter++;
         createObjectToArray(`New Folder`, newCount);
-        getArray(".folder-list", "folder");
+        getArray(".folder-list", "folder"); // POPULATE FOLDER DOM
     });
 
     createNewFile.addEventListener("click", function (e) {
@@ -84,7 +91,7 @@ window.onload = function(e) {
         getArray(".file-list", "svg");
         globalArray = [];
         counter = 0;
-        // listAllFiles(file.value);
+        
     });
 
     const fileManage = $(".custom-file-manage");
@@ -96,21 +103,33 @@ window.onload = function(e) {
     });
 
     clickRemoveSingle.on("click", function(e){
-        alert(`This is the current Index ::: ${currentIndex}`);
+      if (currentIndex== 0   currentIndex == ""){
+          return;
+    }
+   
+   let object = {};
+        
+   let copyLocalArr = getLocallyStored();
+   for (const key in copyLocalArr){
+       if (copyLocalArr.hasOwn property(key)){
+           const element = copyLocalArr[key];
+           if (element.randomValue == currentIndex){
+               copyLocalArr.splice(key, 1);
+           }
+       }
+   }
+   
+  // console.log(copyLocalArr
+   saveArry(copyLocalArr);
+   listAllFiles(file.value)
+        
     });
-    
+
 };
 
 function annotate(){
     const files = document.querySelectorAll('.custom-file-manage[data-identifier]');
-    // var element = document.querySelectorAll('.custom-file-manage');
-    // var dataAttribute = element.getAttribute('data-identifier');
-    console.log(files);
-    // [...files].forEach(btn => {
-    //     let identifier = btn.getAttribute('data-identifier');
-    //     // var element = document.querySelectorAll('.custom-file-manage');
-    //     // console.log(identifier);
-    // });
+    
 }
 
 function listAllFiles(file) {
@@ -128,6 +147,8 @@ function listAllFiles(file) {
  * Create the Object
  * 
  */
+
+// CONVERT OBJECT TO ARRAY AND SAVE TO LOCSL STORAGE
 const createObjectToArray = (name, count, fileType, folderParent) => {
     
     const copyArr = getLocallyStored();
@@ -191,7 +212,7 @@ function getLocallyStored () {
  * Retrieve Array of Objects based on the fileType
  * 
  */
-
+// PIOPULATE THE DOM
 function getArray (attrValue, fileType) {
 
     const folderList = document.querySelector(`${attrValue}`);
@@ -199,10 +220,13 @@ function getArray (attrValue, fileType) {
     const typeOfFileType = typeof fileType;
     const copyArr = getLocallyStored();
     console.log(copyArr);
-    folderList.innerHTML = "";
+   
     if(copyArr == null){
         return;
     }
+    
+     folderList.innerHTML = "";
+    
     copyArr.map((obj)=> {
         let creator;
         if(typeOfFileType == "string"){
@@ -219,10 +243,10 @@ function getArray (attrValue, fileType) {
         }
     });
 
-    annotate();
+   // annotate();
 
 }
-
+ // RETURUS THE LAST ITEM IN OUR ARRAY
 const getLastId =  function(array, n) {
     if (array == null) 
       return void 0;
@@ -231,6 +255,7 @@ const getLastId =  function(array, n) {
     return array.slice(Math.max(array.length - n, 0));  
 };
 
+// POPULATES FOLDER MODAL LIST
 function updateSelect() {
     const folderOptions  = document.querySelector("#folderOptions");
     folderOptions.innerHTML = "";
@@ -244,30 +269,37 @@ function updateSelect() {
     folderOptions.innerHTML = output;
 }
 
+// SAVES TO LOCAL STORAGE
 function saveToLocalStorage (key, value) {
     window.localStorage.setItem(key, value);
 }
 
+
+// GET CURRENT LOCAL STORAGE BY KEY
 function getLocalStorageValue(key) {
     return window.localStorage.getItem(key);
 }
 
+// REMOVE LOCAL STORAGE BY KEY
 function removeLocalStorageByKey(key) {
     window.localStorage.removeItem(key);
 }
 
+
+// CLEAR ALL LOCAL ATORAGE VALUES 
 function removeAllLocalStorageItems() {
     window.localStorage.clear();
 }
 
+// GENERATE RANDOM NUMBER
 function generateRandomNumber(min, max){
     return Math.floor(Math.random() * (max - min));
 }
 
-const createDocument = (documentName, documentType) => {
+// CREATE DOCUMENT OBJECT
+const createDocument = (documentName, documentType, randomValue) => {
     
     const parentElement = document.createElement("div");
-    const randomValue = generateRandomNumber(10000, 99999);
 
     const parentDataDocumentRandomAttr = document.createAttribute("data-identifier");
     parentDataDocumentRandomAttr.value = `${documentName}-${randomValue}`;
