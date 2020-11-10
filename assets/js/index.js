@@ -9,8 +9,8 @@ const FILE_TYPE_ARR = [
 
 // INITIALLY GET THE LOCALLY STORED ARRAY
 const copyArr = getLocallyStored();
-let globalArray = (copyArr == null) ? [] : copyArr;
 
+let globalArray = (copyArr == null) ? [] : copyArr;
 let counter = 0;
 
 /**
@@ -103,7 +103,7 @@ window.onload = function(e) {
     });
 
     clickRemoveSingle.on("click", function(e){
-      if (currentIndex== 0   currentIndex == ""){
+      if (currentIndex == 0 ||  currentIndex == ""){
           return;
     }
    
@@ -138,17 +138,10 @@ function listAllFiles(file) {
 }
 
 /**
- * 
- * @param {* Name_of_the_file_or_folder_you_wish_to_create } name 
- * @param {* Current_Item_count } count 
- * @param {* File_type } fileType 
- * @param {* FOlder_Parent } folderParent 
- * 
- * Create the Object
- * 
+ 
  */
 
-// CONVERT OBJECT TO ARRAY AND SAVE TO LOCSL STORAGE
+// CONVERT OBJECT TO ARRAY AND SAVE TO LOCAL STORAGE
 const createObjectToArray = (name, count, fileType, folderParent) => {
     
     const copyArr = getLocallyStored();
@@ -172,6 +165,7 @@ const createObjectToArray = (name, count, fileType, folderParent) => {
         "lastId": count,
         "fileType": fileType,
         "folderParent": folderParent,
+        "randomValue": randomValue,
     };
 
     if(fileType == "folder"){
@@ -190,7 +184,7 @@ const createObjectToArray = (name, count, fileType, folderParent) => {
  * Save Array to Local Storage
  */
 
-const saveArray = () => {
+const saveArray = (obj) => {
     const copyArr = JSON.stringify(globalArray);
     saveToLocalStorage(arrayKey, copyArr);
 };
@@ -199,9 +193,7 @@ const saveArray = () => {
  * Retrieve Local Storage Array Value using Array Key and return the Array
  */
 function getLocallyStored () {
-    const oldArray = getLocalStorageValue(arrayKey);
-    const copyArr = JSON.parse(oldArray);
-    return copyArr;
+    return JSON.parse(getLocalStorageValue(arryKey));
 }
 
 /**
@@ -212,14 +204,12 @@ function getLocallyStored () {
  * Retrieve Array of Objects based on the fileType
  * 
  */
-// PIOPULATE THE DOM
+// POPULATE THE DOM
 function getArray (attrValue, fileType) {
 
     const folderList = document.querySelector(`${attrValue}`);
-    // console.log(attrValue, fileType);
     const typeOfFileType = typeof fileType;
     const copyArr = getLocallyStored();
-    console.log(copyArr);
    
     if(copyArr == null){
         return;
